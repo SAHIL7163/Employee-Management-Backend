@@ -16,6 +16,9 @@ const addNewEmployee = async(req,res)=>
         }
 
         console.log(req.body);
+         if (isNaN(req?.body?.id)) { 
+            return res.status(400).json({ message: "ID must be a numerical value." });
+        }
        try{    
            const existingEmployeeById = await Employees.findOne({ id: req.body.id });
            if (existingEmployeeById) {
