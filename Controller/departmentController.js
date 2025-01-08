@@ -17,6 +17,9 @@ const addNewDepartment = async(req,res)=>
         }
 
        console.log(req.body);
+         if (isNaN(req?.body?.id)) { 
+            return res.status(400).json({ message: "ID must be a numerical value." });
+        }
 
        try{
 
